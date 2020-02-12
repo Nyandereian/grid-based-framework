@@ -1,0 +1,86 @@
+// Containers
+.container {
+
+}
+
+.mr-auto {
+  margin: 0 auto;
+}
+
+.w100 {
+  width: 100%;
+}
+
+//Rows
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.left {
+  justify-content: flex-start;
+}
+
+.center {
+  justify-content: center;
+}
+
+.right {
+  justify-content: flex-end;
+}
+
+.up {
+  align-items: flex-start;
+}
+
+.down {
+  align-items: flex-end;
+}
+
+.middle {
+  align-items: center;
+}
+
+.stretch {
+  align-items: stretch;
+}
+
+.baseline {
+  align-items: baseline;
+}
+
+
+
+// Columns
+
+[class^="col-"] {
+  margin: 0 10px;
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    width: calc(100% / 12 * #{$i});
+  }
+}
+
+.col {
+  flex-grow: 1;
+}
+
+@each $size, $value in $breakpoints {
+  @include respond-above('#{$size}') {
+    @for $i from 1 through 12 {
+      .col-#{$size}-#{$i} {
+        width: calc(100% / 12 * #{$i});
+      }
+    }
+    .col-#{$size} {
+      flex-grow: 1;
+    }
+  }
+}
